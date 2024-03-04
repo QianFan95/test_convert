@@ -21,7 +21,7 @@
         }
         textarea {
             width: 100%;
-            min-height: 150px;
+            min-height: 250px;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -58,28 +58,49 @@
             var lines = input.split("\n");
             var output = "";
 
-            for (var i = 1; i < lines.length; i++) {
-                var cells = lines[i].split("\t"); // 假设表格使用制表符作为分隔符
-                if (cells.length >= 11) { // 假设表格至少有11列数据
-                    var xiangxiang = cells[0]
-                    var uid = cells[1];
-                    var appVersion = cells[2];
-                    var feedbackTime = cells[7];
-                    var deviceBuvid = cells[8];
-                    var deviceModel = cells[9];
-                    var operatingSystem = cells[10];
-                    var photo = cells[11];
+            var first = lines[0].split("\t");
+            if (first[0] === "运营向问题") {
+                for (var i = 2; i < lines.length; i++) {
+                    var cells = lines[i].split("\t"); // 假设表格使用制表符作为分隔符
+                    var miaoshu = cells[0]
+                    var title = cells[1];
+                    var lang = cells[2];
+                    var sid = cells[3];
+                    var epid = cells[4];
+                    var time_stap = cells[5];
 
-                    output += "详细说明: " + xiangxiang + "\n";
-                    output += "UID: " + uid + "\n";
-                    output += "app版本号: " + appVersion + "\n";
-                    output += "反馈时间: " + feedbackTime + "\n";
-                    output += "设备buvid: " + deviceBuvid + "\n";
-                    output += "设备型号: " + deviceModel + "\n";
-                    output += "操作系统: " + operatingSystem + "\n";
-                    output += "截图: " + photo + "\n\n";
+                    output += "描述详情: " + miaoshu + "\n";
+                    output += "稿件title: " + title + "\n";
+                    output += "语言: " + lang + "\n";
+                    output += "剧集sid: " + sid + "\n";
+                    output += "单集epid: " + epid + "\n";
+                    output += "时间戳: " + time_stap + "\n\n";
+                }
+            }else {
+                for (var i = 2; i < lines.length; i++) {
+                    var cells = lines[i].split("\t"); // 假设表格使用制表符作为分隔符
+                    if (cells.length >= 11) { // 假设表格至少有11列数据
+                        var xiangxiang = cells[0]
+                        var uid = cells[1];
+                        var appVersion = cells[2];
+                        var feedbackTime = cells[7];
+                        var deviceBuvid = cells[8];
+                        var deviceModel = cells[9];
+                        var operatingSystem = cells[10];
+                        var photo = cells[11];
+
+                        output += "详细说明: " + xiangxiang + "\n";
+                        output += "UID: " + uid + "\n";
+                        output += "app版本号: " + appVersion + "\n";
+                        output += "反馈时间: " + feedbackTime + "\n";
+                        output += "设备buvid: " + deviceBuvid + "\n";
+                        output += "设备型号: " + deviceModel + "\n";
+                        output += "操作系统: " + operatingSystem + "\n";
+                        output += "截图: " + photo + "\n\n";
+                    }
                 }
             }
+
 
             document.getElementById("outputText").value = output;
         }

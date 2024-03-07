@@ -63,18 +63,20 @@
                 for (var i = 2; i < lines.length; i++) {
                     var cells = lines[i].split("\t"); // 假设表格使用制表符作为分隔符
                     var miaoshu = cells[0]
-                    var title = cells[1];
+                    var time_stap = cells[1];
                     var lang = cells[2];
                     var sid = cells[3];
                     var epid = cells[4];
-                    var time_stap = cells[5];
-
+                    var cc_subtitle = cells[5];
+                    var feedback = cells[6];
+                    
                     output += "描述详情: " + miaoshu + "\n";
-                    output += "稿件title: " + title + "\n";
+                    output += "时间戳: " + time_stap + "\n";
                     output += "语言: " + lang + "\n";
                     output += "剧集sid: " + sid + "\n";
                     output += "单集epid: " + epid + "\n";
-                    output += "时间戳: " + time_stap + "\n\n";
+                    output += "cc字幕: " + cc_subtitle + "\n";
+                    output += "用户反馈: " + feedback + "\n\n";
                 }
             }else {
                 for (var i = 2; i < lines.length; i++) {
